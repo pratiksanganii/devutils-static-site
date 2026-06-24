@@ -18,9 +18,9 @@
 - [x] Responsive landing & about page layouts ✅
 
 ## Phase 3: Infrastructure Configuration
-- [ ] Provision AWS S3 bucket and private IAM/OAC access policies ⬜
-- [ ] Request ACM SSL Certificate via `us-east-1` ⬜
-- [ ] Provision CloudFront distribution with SPA custom error handling ⬜
+- [x] Provision AWS S3 bucket and private IAM/OAC access policies ✅
+- [x] Request ACM SSL Certificate via `us-east-1` ✅
+- [x] Provision CloudFront distribution with SPA custom error handling ✅
 
 ## Phase 4: Automation (CI/CD)
 - [ ] Author GitHub Actions deployment pipeline ⬜
