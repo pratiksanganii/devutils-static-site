@@ -12,10 +12,10 @@
 - [x] Build Dark/Light mode theme engine (`useTheme`) ✅
 
 ## Phase 2: Core MVP Tools Implementation
-- [ ] JSON Formatter component & routing ⬜
-- [ ] UUID Generator component & routing ⬜
-- [ ] Base64 Encoder/Decoder component & routing ⬜
-- [ ] Responsive landing & about page layouts ⬜
+- [x] JSON Formatter component & routing ✅
+- [x] UUID Generator component & routing ✅
+- [x] Base64 Encoder/Decoder component & routing ✅
+- [x] Responsive landing & about page layouts ✅
 
 ## Phase 3: Infrastructure Configuration
 - [ ] Provision AWS S3 bucket and private IAM/OAC access policies ⬜
