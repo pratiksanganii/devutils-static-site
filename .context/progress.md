@@ -24,5 +24,5 @@
 
 ## Phase 4: Automation (CI/CD)
 - [x] Author GitHub Actions deployment pipeline ✅
-- [x] Store encrypted secrets within repository ⬜
-- [ ] Validate end-to-end atomic deployments on git push ⬜
+- [x] Store encrypted secrets within repository ✅
+- [x] Validate end-to-end atomic deployments on git push ✅
