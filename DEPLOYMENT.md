@@ -206,10 +206,60 @@ Once the infrastructure is set up, deploying updates is straightforward:
    aws s3 sync dist/ s3://<your-bucket-name> --delete
    ```
 
-### ⚡ Cache Invalidation
-CloudFront caches static files at edge locations. When you upload code changes, invalidate the cache to make them live instantly:
+### ⚡ Cache Invalidation (Manual deploys only)
+CloudFront caches static files at edge locations. When you upload code changes manually, invalidate the cache to make them live instantly:
 1. Open the **CloudFront Console** and click on your distribution.
 2. Go to the **Invalidations** tab.
 3. Click **Create invalidation**.
 4. In **Object paths**, enter `/*` to invalidate all files.
 5. Click **Create invalidation**. (It will complete in 1–2 minutes).
+
+---
+
+### Method C: GitHub Actions (Automated CI/CD)
+You can automate the compilation, S3 syncing, and CloudFront cache invalidation so that pushing changes to the `master` branch triggers the deployment pipeline automatically.
+
+#### 1. Create a Dedicated IAM Deployment User
+To follow the Principle of Least Privilege, do **not** use AWS Admin keys. Create a dedicated IAM user (e.g., `github-actions-deployer`) and attach the following inline permissions policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3DeploymentPermissions",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:DeleteObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::<YOUR-S3-BUCKET-NAME>",
+        "arn:aws:s3:::<YOUR-S3-BUCKET-NAME>/*"
+      ]
+    },
+    {
+      "Sid": "CloudFrontInvalidationPermissions",
+      "Effect": "Allow",
+      "Action": [
+        "cloudfront:CreateInvalidation"
+      ],
+      "Resource": [
+        "arn:aws:cloudfront::<YOUR-AWS-ACCOUNT-ID>:distribution/<YOUR-CLOUDFRONT-DISTRIBUTION-ID>"
+      ]
+    }
+  ]
+}
+```
+
+#### 2. Configure GitHub Secrets
+In your GitHub repository, navigate to **Settings** ➔ **Secrets and variables** ➔ **Actions**, and add the following four encrypted secrets:
+*   `AWS_ACCESS_KEY_ID`: The Access Key ID of your IAM deployment user.
+*   `AWS_SECRET_ACCESS_KEY`: The Secret Access Key of your IAM deployment user.
+*   `AWS_S3_BUCKET`: Your S3 bucket name.
+*   `AWS_CLOUDFRONT_DISTRIBUTION_ID`: Your CloudFront distribution ID.
+
+#### 3. Automatic Deployments
+Whenever you push changes to the `master` branch, the workflow configured in `.github/workflows/deploy.yml` will automatically check out the code, run linter checks, compile the production assets, sync them to S3 (deleting stale build hashes), and trigger the CloudFront edge cache invalidation. You can monitor the pipeline status under the **Actions** tab of your repository.
