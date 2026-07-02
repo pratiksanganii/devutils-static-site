@@ -6,6 +6,7 @@ import { Tools } from '../pages/Tools';
 import { JsonFormatter } from '../pages/JsonFormatter';
 import { UUIDGenerator } from '../pages/UUIDGenerator';
 import { Base64Tool } from '../pages/Base64Tool';
+import { JWTDebugger } from '../pages/JWTDebugger';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
           {
             path: 'base64',
             element: <Base64Tool />,
+          },
+          {
+            path: 'jwt',
+            element: <JWTDebugger />,
           },
         ],
       },

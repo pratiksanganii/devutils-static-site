@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Braces, Key, Binary, ArrowRight } from 'lucide-react';
+import { Braces, Key, Binary, ArrowRight, Shield } from 'lucide-react';
 
 export const Tools: React.FC = () => {
   const toolsList = [
@@ -24,6 +24,13 @@ export const Tools: React.FC = () => {
       description: "Secure client-side text encoder and decoder supporting input clearing, instant processing, and quick copying.",
       icon: <Binary className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
       href: "/tools/base64"
+    },
+    {
+      id: "jwt",
+      name: "JWT Debugger",
+      description: "Decode and inspect JSON Web Token header/payload, and verify HS256 signatures with custom secret keys.",
+      icon: <Shield className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      href: "/tools/jwt"
     }
   ];
 
@@ -40,9 +47,10 @@ export const Tools: React.FC = () => {
       {/* Grid List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {toolsList.map((tool) => (
-          <div
+          <Link
             key={tool.id}
-            className="group flex flex-col justify-between p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-200 hover:shadow-md"
+            to={tool.href}
+            className="group flex flex-col justify-between p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-200 hover:shadow-md text-left"
           >
             <div className="space-y-4">
               <div className="inline-flex p-3 rounded-lg bg-blue-50 dark:bg-blue-950/50">
@@ -56,15 +64,14 @@ export const Tools: React.FC = () => {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-              <Link
-                to={tool.href}
+              <span
                 className="inline-flex items-center text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
               >
                 Open Tool
                 <ArrowRight className="ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
