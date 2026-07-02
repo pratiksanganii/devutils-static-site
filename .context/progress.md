@@ -23,6 +23,6 @@
 - [x] Provision CloudFront distribution with SPA custom error handling ✅
 
 ## Phase 4: Automation (CI/CD)
-- [ ] Author GitHub Actions deployment pipeline ⬜
-- [ ] Store encrypted secrets within repository ⬜
+- [x] Author GitHub Actions deployment pipeline ✅
+- [x] Store encrypted secrets within repository ⬜
 - [ ] Validate end-to-end atomic deployments on git push ⬜
