@@ -1,5 +1,11 @@
 # 🛠️ DevTools - Client-Side Developer Utilities
 
+[![Deploy Status](https://github.com/pratiksanganii/devutils-static-site/actions/workflows/deploy.yml/badge.svg)](https://github.com/pratiksanganii/devutils-static-site/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
+[![Website](https://img.shields.io/badge/Live-devutils.pratiksangani.com-blue.svg)](https://devutils.pratiksangani.com)
+[![React 19](https://img.shields.io/badge/React-19-cyan.svg)](https://react.dev)
+[![AWS Serverless](https://img.shields.io/badge/AWS-Serverless-orange.svg)](https://aws.amazon.com)
+
 A suite of fast, lightweight, and privacy-first developer utility tools built using **React 19, TypeScript, Vite, and Tailwind CSS**. 
 
 Live Site: [devutils.pratiksangani.com](https://devutils.pratiksangani.com)
@@ -19,6 +25,7 @@ Most online utility tools (like JSON formatters or Base64 converters) send your 
 - **JSON Formatter:** Formats (with custom spaces), minifies, and validates raw JSON strings. Displays descriptive line-numbered syntax errors if validation fails.
 - **UUID Generator:** Generates single or bulk cryptographically secure UUID v4 tokens using browser-native cryptography. Features toggles for Uppercase, hyphens, and braces.
 - **Base64 Encoder/Decoder:** Safely converts text to Base64 and back. Custom-built to be **Unicode-Safe** (fully supports emojis 🚀 and international character sets without throwing browser crashes).
+- **JWT Debugger:** Decode and inspect JSON Web Token header and payload segments locally. Perform optional HS256 signature verification securely in-browser using the Web Crypto API.
 - **Responsive Layout:** Clean, minimalist UI matching Vercel and GitHub styling. Collapses gracefully for mobile viewports.
 - **Persistent Theme Engine:** Responsive dark and light mode toggle that saves user preference in `localStorage` and falls back to system preferences.
 
